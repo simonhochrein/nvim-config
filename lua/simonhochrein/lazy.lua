@@ -14,50 +14,51 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
-		"nvim-telescope/telescope.nvim", tag = "0.1.3",
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.3",
 		dependencies = {
-			"nvim-lua/plenary.nvim"  
-		}
+			"nvim-lua/plenary.nvim",
+		},
 	},
-	{ 'rose-pine/neovim', name = 'rose-pine' },
+	{ "rose-pine/neovim", name = "rose-pine" },
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	{ "nvim-treesitter/playground" },
 	{ "mbbill/undotree" },
 	{ "tpope/vim-fugitive" },
-	{'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
+	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
 
 	--- Uncomment these if you want to manage LSP servers from neovim
-	{'williamboman/mason.nvim'},
-	{'williamboman/mason-lspconfig.nvim'},
+	{ "williamboman/mason.nvim" },
+	{ "williamboman/mason-lspconfig.nvim" },
 
 	-- LSP Support
 	{
-		'neovim/nvim-lspconfig',
+		"neovim/nvim-lspconfig",
 		dependencies = {
-			{'hrsh7th/cmp-nvim-lsp'},
+			{ "hrsh7th/cmp-nvim-lsp" },
 		},
 	},
 
 	-- Autocompletion
 	{
-		'hrsh7th/nvim-cmp',
+		"hrsh7th/nvim-cmp",
 		dependencies = {
-			{'L3MON4D3/LuaSnip'},
-		}
+			{ "L3MON4D3/LuaSnip" },
+		},
 	},
-    {
-        'tree-nvim/nvim-tree.lua',
-        dependencies = {
-            {'nvim-tree/nvim-web-devicons'},
-        },
-    },
-    'numToStr/Comment.nvim',
-    'sbdchd/neoformat',
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons" },
+		},
+	},
+	"numToStr/Comment.nvim",
+	"sbdchd/neoformat",
 })
 
-require('rose-pine').setup({
-    disable_background = true,
-    disable_float_background = true,
+require("rose-pine").setup({
+	disable_background = true,
+	disable_float_background = true,
 })
 
-vim.cmd('colorscheme rose-pine')
+vim.cmd("colorscheme rose-pine")
