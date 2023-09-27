@@ -51,6 +51,8 @@ require("lazy").setup({
             {'nvim-tree/nvim-web-devicons'},
         },
     },
+    'numToStr/Comment.nvim',
+    'sbdchd/neoformat',
 })
 
 require('rose-pine').setup({

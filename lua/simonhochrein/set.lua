@@ -30,3 +30,15 @@ vim.opt.updatetime = 50
 -- vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
+
+vim.g.neoformat_try_node_exe = 1
+
+-- augroup fmt
+-- autocmd!
+--   autocmd BufWritePre * undojoin | Neoformat
+-- augroup END
+vim.api.nvim_create_augroup("fmt", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    command = "undojoin | Neoformat"
+})
