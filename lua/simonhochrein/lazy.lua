@@ -44,7 +44,13 @@ require("lazy").setup({
 		dependencies = {
 			{'L3MON4D3/LuaSnip'},
 		}
-	}
+	},
+    {
+        'tree-nvim/nvim-tree.lua',
+        dependencies = {
+            {'nvim-tree/nvim-web-devicons'},
+        },
+    },
 })
 
 require('rose-pine').setup({
