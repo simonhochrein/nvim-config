@@ -1,0 +1,4 @@
+require("simonhochrein")
+
+SetupColors()
+
