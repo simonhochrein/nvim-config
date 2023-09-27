@@ -54,6 +54,7 @@ require("lazy").setup({
 	},
 	"numToStr/Comment.nvim",
 	"sbdchd/neoformat",
+	"startup-nvim/startup.nvim",
 })
 
 require("rose-pine").setup({
