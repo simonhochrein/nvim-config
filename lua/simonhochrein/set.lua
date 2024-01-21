@@ -3,9 +3,9 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
@@ -39,6 +39,6 @@ vim.g.neoformat_try_node_exe = 1
 -- augroup END
 vim.api.nvim_create_augroup("fmt", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*",
-    command = "undojoin | Neoformat"
+	pattern = "*",
+	command = "undojoin | Neoformat",
 })
