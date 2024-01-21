@@ -56,6 +56,8 @@ require("lazy").setup({
 	"sbdchd/neoformat",
 	"startup-nvim/startup.nvim",
 	"github/copilot.vim",
+	"smartpde/telescope-recent-files",
+	"JoosepAlviste/nvim-ts-context-commentstring",
 })
 
 require("rose-pine").setup({
