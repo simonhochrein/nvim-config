@@ -23,7 +23,7 @@ require("lazy").setup({
 	{ "rose-pine/neovim", name = "rose-pine" },
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	{ "nvim-treesitter/playground" },
-
+	{ "mbbill/undotree" },
 	{ "tpope/vim-fugitive" },
 	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
 
@@ -56,6 +56,16 @@ require("lazy").setup({
 	"sbdchd/neoformat",
 	"startup-nvim/startup.nvim",
 	"github/copilot.vim",
+	"smartpde/telescope-recent-files",
+	"JoosepAlviste/nvim-ts-context-commentstring",
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = {
+			"kevinhwang91/promise-async",
+		},
+	},
+	"luukvbaal/statuscol.nvim",
+	"lewis6991/gitsigns.nvim",
 })
 
 require("rose-pine").setup({
