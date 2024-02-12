@@ -58,6 +58,14 @@ require("lazy").setup({
 	"github/copilot.vim",
 	"smartpde/telescope-recent-files",
 	"JoosepAlviste/nvim-ts-context-commentstring",
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = {
+			"kevinhwang91/promise-async",
+		},
+	},
+	"luukvbaal/statuscol.nvim",
+	"lewis6991/gitsigns.nvim",
 })
 
 require("rose-pine").setup({
