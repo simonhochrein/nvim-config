@@ -66,6 +66,10 @@ require("lazy").setup({
 	},
 	"luukvbaal/statuscol.nvim",
 	"lewis6991/gitsigns.nvim",
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
   {
     "folke/trouble.nvim",
     opts = {}, -- for default options, refer to the configuration section for custom setup.

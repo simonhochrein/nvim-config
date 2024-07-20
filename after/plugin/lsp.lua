@@ -52,12 +52,30 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<C-h>", function()
 		vim.lsp.buf.signature_help()
 	end, opts)
+	vim.keymap.set("n", "<leader>gh", function()
+		vim.cmd("ClangdSwitchSourceHeader")
+	end, opts)
 end)
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = { "eslint", "tsserver" },
-	handlers = { lsp.default_setup },
+	handlers = {
+		lsp.default_setup,
+		clangd = function()
+			require("lspconfig").clangd.setup({
+				cmd = {
+					"clangd",
+					"--query-driver=**",
+				},
+			})
+		end,
+		asm_lsp = function()
+			require("lspconfig").asm_lsp.setup({
+				filetypes = { "s", "asm", "nasm" },
+			})
+		end,
+	},
 })
 
 lsp.setup()

@@ -33,6 +33,8 @@ vim.g.mapleader = " "
 
 vim.g.neoformat_try_node_exe = 1
 
+vim.g.python3_host_prog = "C:/Users/simon/AppData/Local/Microsoft/WindowsApps/python.exe"
+
 -- augroup fmt
 -- autocmd!
 --   autocmd BufWritePre * undojoin | Neoformat
