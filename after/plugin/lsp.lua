@@ -1,3 +1,5 @@
+vim.diagnostic.config({ virtual_text = false, update_in_insert = true })
+
 local lsp = require("lsp-zero").preset({})
 local cmp_action = require("lsp-zero").cmp_action()
 
