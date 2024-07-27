@@ -59,7 +59,7 @@ end)
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-	ensure_installed = { "eslint", "tsserver" },
+	ensure_installed = {},
 	handlers = {
 		lsp.default_setup,
 		clangd = function()
