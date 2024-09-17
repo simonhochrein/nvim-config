@@ -58,3 +58,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     end
   end,
 })
+
+vim.filetype.add({
+  extension = {
+    tf = "terraform"
+  }
+})
