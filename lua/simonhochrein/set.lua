@@ -1,5 +1,4 @@
 -- vim.opt.guicursor = ""
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -33,34 +32,36 @@ vim.g.mapleader = " "
 
 vim.g.neoformat_try_node_exe = 1
 
-vim.g.python3_host_prog = "C:/Users/simon/AppData/Local/Microsoft/WindowsApps/python.exe"
+vim.g.python3_host_prog =
+    "C:/Users/simon/AppData/Local/Microsoft/WindowsApps/python.exe"
 
 -- augroup fmt
 -- autocmd!
 --   autocmd BufWritePre * undojoin | Neoformat
 -- augroup END
-vim.api.nvim_create_augroup("fmt", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	command = "undojoin | Neoformat",
-})
+-- vim.api.nvim_create_augroup("fmt", {clear = true})
+-- vim.api.nvim_create_autocmd("BufWritePre",
+--                             {pattern = "*", command = "undojoin | Neoformat"})
 
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.foldcolumn = '1'
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  callback = function()
-    if require("nvim-treesitter.parsers").has_parser() then
-      vim.opt.foldmethod = "expr"
-      vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-    else
-      vim.opt.foldmethod = "syntax"
-    end
-  end,
-})
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+-- vim.api.nvim_create_autocmd({"FileType"}, {
+--     callback = function()
+--         if require("nvim-treesitter.parsers").has_parser() then
+--             vim.opt.foldmethod = "expr"
+--             vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+--         else
+--             vim.opt.foldmethod = "syntax"
+--         end
+--     end
+-- })
 
-vim.filetype.add({
-  extension = {
-    tf = "terraform"
-  }
+vim.filetype.add({extension = {tf = "terraform", templ = "templ"}})
+
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+    pattern = {"*.templ"},
+    callback = vim.lsp.buf.format
 })

@@ -5,6 +5,16 @@ local cmp_action = require("lsp-zero").cmp_action()
 
 local cmp = require("cmp")
 local cmp_select = {behavior = cmp.SelectBehavior.Insert}
+local luasnip = require('luasnip')
+
+local has_words_before = function()
+    unpack = unpack or table.unpack
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and
+               vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col,
+                                                                          col)
+                   :match("%s") == nil
+end
 
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
@@ -13,8 +23,43 @@ cmp.setup({
         ["<C-y>"] = cmp.mapping.confirm({select = true}),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-f>"] = cmp_action.luasnip_jump_forward(),
-        ["<C-b>"] = cmp_action.luasnip_jump_backward()
-    })
+        ["<C-b>"] = cmp_action.luasnip_jump_backward(),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                -- regular selection
+                cmp.confirm({
+                    behavior = cmp.ConfirmBehavior.Insert,
+                    select = true
+                })
+            elseif luasnip.expand_or_locally_jumpable() then
+                -- trigger snippet
+                luasnip.expand_or_jump()
+            elseif has_words_before() then
+                -- if non-whitespace before cursor, trigger completion menu
+                cmp.complete()
+            else
+                fallback()
+            end
+        end, {"i", "s"}),
+
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                -- consume word after cursor (<Tab> behaviour is to prepend to it)
+                cmp.confirm({
+                    select = true,
+                    behavior = cmp.ConfirmBehavior.Replace
+                })
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end)
+    }),
+    snippet = {
+        expand = function(args) require"luasnip".lsp_expand(args.body) end
+    },
+    experimental = {ghost_text = {enabled = true, hl_group = "Comment"}}
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -80,7 +125,26 @@ require("mason-lspconfig").setup({
                     }
                 }
             }
-
+        end,
+        html = function()
+            require('lspconfig').html.setup {filetypes = {"html", "templ"}}
+        end,
+        htmx = function()
+            require('lspconfig').htmx.setup({filetypes = {"html", "templ"}})
+        end,
+        tailwindcss = function()
+            require('lspconfig').tailwindcss.setup {
+                filetypes = {
+                    "html", "templ", "javascript", "typescript", "react"
+                },
+                settings = {tailwindCSS = {includeLanguages = {templ = "html"}}}
+            }
+        end,
+        emmet_language_server = function()
+            require('lspconfig').emmet_language_server.setup {
+                filetypes = {"templ", "react", "html"},
+                init_options = {includeLanguages = {templ = "html"}}
+            }
         end
     }
 })
