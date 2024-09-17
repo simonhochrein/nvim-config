@@ -35,14 +35,6 @@ vim.g.neoformat_try_node_exe = 1
 vim.g.python3_host_prog =
     "C:/Users/simon/AppData/Local/Microsoft/WindowsApps/python.exe"
 
--- augroup fmt
--- autocmd!
---   autocmd BufWritePre * undojoin | Neoformat
--- augroup END
--- vim.api.nvim_create_augroup("fmt", {clear = true})
--- vim.api.nvim_create_autocmd("BufWritePre",
---                             {pattern = "*", command = "undojoin | Neoformat"})
-
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.foldcolumn = '1'
 
@@ -61,7 +53,4 @@ vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 
 vim.filetype.add({extension = {tf = "terraform", templ = "templ"}})
 
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-    pattern = {"*.templ"},
-    callback = vim.lsp.buf.format
-})
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

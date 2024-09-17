@@ -55,7 +55,15 @@ require("lazy").setup({
 		},
 	},
 	"numToStr/Comment.nvim",
-	"sbdchd/neoformat",
+	-- "sbdchd/neoformat",
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      formatters_by_ft = {
+        templ = { "templ" },
+      },
+    },
+  },
 	"startup-nvim/startup.nvim",
 	"smartpde/telescope-recent-files",
 	"JoosepAlviste/nvim-ts-context-commentstring",
