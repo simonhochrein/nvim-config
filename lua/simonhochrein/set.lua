@@ -35,8 +35,8 @@ vim.g.neoformat_try_node_exe = 1
 vim.g.python3_host_prog =
     "C:/Users/simon/AppData/Local/Microsoft/WindowsApps/python.exe"
 
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-vim.o.foldcolumn = '1'
+-- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+-- vim.o.foldcolumn = '1'
 
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
@@ -51,6 +51,6 @@ vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 --     end
 -- })
 
-vim.filetype.add({extension = {tf = "terraform", templ = "templ"}})
+vim.filetype.add({extension = {tf = "terraform", templ = "templ", vert = "glsl", frag = "glsl" }})
 
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
