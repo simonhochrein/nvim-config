@@ -119,6 +119,12 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter"
       }
     },
+    "jay-babu/mason-nvim-dap.nvim",
+    {
+      'mrcjkb/rustaceanvim',
+      version = '^5', -- Recommended
+      lazy = false, -- This plugin is already lazy
+    },
     "m4xshen/autoclose.nvim"
   },
 })

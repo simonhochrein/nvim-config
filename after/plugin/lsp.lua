@@ -148,5 +148,6 @@ require("mason-lspconfig").setup({
     end
   }
 })
+require("mason-nvim-dap").setup()
 
 lsp.setup()
