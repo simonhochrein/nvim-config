@@ -31,6 +31,7 @@ vim.opt.updatetime = 50
 vim.g.mapleader = " "
 
 vim.g.neoformat_try_node_exe = 1
+vim.o.guifont = "FiraCode Nerd Font Mono"
 
 vim.g.python3_host_prog =
 "C:/Users/simon/AppData/Local/Microsoft/WindowsApps/python.exe"
@@ -58,3 +59,6 @@ vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 if vim.fn.has('win32') then
   vim.g.undotree_DiffCommand = "FC"
 end
+
+vim.g.neovide_transparency = 0.8
+vim.g.neovide_normal_opacity = 0.8
